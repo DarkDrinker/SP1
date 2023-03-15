@@ -1,30 +1,47 @@
-int currentPos = 0;
-
-//single triangle
-void obstacle(int tmp){
-  currentPos +=tmp;
-  int tx1 = 800-currentPos;
-  int tx2 = 825-currentPos;
-  int tx3 = 850-currentPos;
-  fill(0);
-  //x1,y1,x2,y2,x3,y3
-  triangle(tx1,300,tx2,250,tx3,300);
-
-}
+class Obstacle {
+   int x, y, z;
+  float speed = 4;
+  int fixedX=300;
+  int fixedY=250;
+  boolean isDouble; 
+  boolean isTriple;
+ 
   
+  Obstacle(int x, int y, int z,boolean g, boolean h,float speed) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.isDouble = g;
+    this.isTriple = h;
+    this.speed = speed;
+    
+  }
   
-  //double triangle
-void doubleobstacle(int tmp){
-  fill(0);
-  currentPos +=tmp;
-  int tx1 = 800-currentPos;
-  int tx2 = 825-currentPos;
-  int tx3 = 850-currentPos;
-  int t2x1 = 825-currentPos;
-  int t2x2 = 850-currentPos;
-  int t2x3 = 875-currentPos;
-  //x1,y1,x2,y2,x3,y3
-  triangle(tx1,300,tx2,250,tx3,300);
-  //x1,y1,x2,y2,x3,y3
-  triangle(t2x1,300,t2x2,250,t2x3,300);
+  void increaseSpeed(float tmp1) {
+    this.speed = tmp1;
+    
+  }
+  
+  void move() {
+    // Move obstacles
+    x -= speed;
+    y -= speed;
+    z -= speed;
+    // Draw sky
+    fill(0);
+    triangle(x, fixedX, y, fixedY, z, fixedX);
+    if(isDouble){
+    triangle(x+25, fixedX, y+25, fixedY, z+25, fixedX);
+    }
+    if(isTriple){
+      triangle(x+50, fixedX, y+50, fixedY, z+50, fixedX);
+    }
+  }
+  
+  void reset() {
+    // Reset sky position
+    x = 800;
+    y = 825;
+    z = 850;
+  }
 }

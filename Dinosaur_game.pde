@@ -41,6 +41,7 @@ void draw(){
   int score = elapsedSeconds*100;
   fill(0);
   textSize(20);
+  textAlign(CENTER);
   text("Score:  "+score, 700 ,100);
   
             // DINOSAUR
@@ -79,12 +80,10 @@ void draw(){
   }
   
     
-    
+  // "object" collision by watching the bottom corners and middle. for change of color. 
  color pointBF = get(dinoX+49,dinoY+99);
  color pointBB = get(dinoX,dinoY+99);
  color pointBM = get(dinoX+25,dinoY+99);
-// println(pointBF);
-  //if(pointBF != -1 && pointBF != -6908266 && pointBB != -1 && pointBB != -6908266 && pointBM != -1 && pointBM != -6908266){
     if(pointBB == -16777216 || pointBF == -16777216 || pointBM == -16777216){
       noLoop();
       background(255);
@@ -93,24 +92,27 @@ void draw(){
       text("SCORE: "+elapsedSeconds*100,400,200);
   }
   
+  
+  // speed increases af certain amount of time.
   if(elapsedSeconds > 15){
+    //speed increase after 15 seconds
     boolean firstspeedincrease = true;
     if(firstspeedincrease){
       firstspeedincrease = false;
-      //speed increase after 15 seconds
       obstacle1.increaseSpeed(6);
       obstacle2.increaseSpeed(6);
       obstacle3.increaseSpeed(6);
       duration = 2700;
     }
   }
-  if(elapsedSeconds > 30){
+  if(elapsedSeconds > 31){
+    //speed increase after 30 seconds. 
     boolean secondspeedincrease = true;
       if(secondspeedincrease){
         secondspeedincrease = false;
       obstacle1.increaseSpeed(8);
       obstacle3.increaseSpeed(8);
-      duration = 2000;
+      duration = 2200;
       }
     }
 }
