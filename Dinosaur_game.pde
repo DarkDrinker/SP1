@@ -23,8 +23,6 @@ void draw(){
   stroke(150);
   line(0,290,800,290);
   
-  loadPixels();
-  
   // to keep track of time/score
   if (millis()-previousTime>= ellapsedMillis) {
     previousTime = millis();
@@ -48,13 +46,14 @@ void draw(){
   drawDinosaur(dinoX, dinoY + 50, 50, 50);
   
   if(elapsedSeconds >= 5){
-    obstacle(speed);
+  //  obstacle(speed);
+    doubleobstacle(speed);
   }
-int r1 = get(dinoX+50,dinoY+50);
+//int r1 = red((get(dinoX+50,dinoY+50)));
 //int g1 = green(get(int(dinoX+50),int(dinoY+50)));
 //int b1 = blue(get(int(dinoX)+50,(dinoY)+50));
 
-println(r1);
+//println(r1);
  // int impact = get(int(dinoX)+50,int(dinoY)+50);
   
   //if(impact == 0){

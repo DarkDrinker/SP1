@@ -16,3 +16,14 @@ void obstacle(int tmp){
   
   
   //double triangle
+void doubleobstacle(int tmp){
+  currentPos +=tmp;
+  int tx1 = 800-currentPos;
+  int tx2 = 825-currentPos;
+  int tx3 = 850-currentPos;
+  int t2x1 = 825-currentPos;
+  int t2x2 = 850-currentPos;
+  int t2x3 = 875-currentPos;
+  triangle(tx1,300,tx2,250,tx3,300);
+  triangle(t2x1,300,t2x2,250,t2x3,300);
+}
